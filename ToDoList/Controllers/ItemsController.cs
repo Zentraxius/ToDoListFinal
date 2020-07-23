@@ -18,29 +18,23 @@ namespace ToDoList.Controllers
     public ActionResult New(int categoryId)
     {
       Category category = Category.Find(categoryId);
-      return View();
+      return View(category);
     }
 
-    [HttpPost("/items")]
-    public ActionResult Create(string description)
-    {
-      Item myItem = new Item(description);
-      return RedirectToAction("Index");
-    }
+    // [HttpPost("/items")]
+    // public ActionResult Create(string description)
+    // {
+    //   Item myItem = new Item(description);
+    //   return RedirectToAction("Index");
+    // }
 
-    [HttpPost("/items/delete")]
-    public ActionResult DeleteAll()
-    {
-      Item.ClearAll();
-      return View();
-    }
 
-    [HttpGet("/items/{id}")]
-    public ActionResult Show(int id)
-    {
-      Item foundItem = Item.Find(id);
-      return View(foundItem);
-    }
+    // [HttpGet("/items/{id}")]
+    // public ActionResult Show(int id)
+    // {
+    //   Item foundItem = Item.Find(id);
+    //   return View(foundItem);
+    // }
 
     [HttpGet("/categories/{categoryId}/items/{itemId}")]
     public ActionResult Show(int categoryId, int itemId)
@@ -51,6 +45,13 @@ namespace ToDoList.Controllers
       model.Add("item", item);
       model.Add("category", category);
       return View(model);
+    }
+    
+    [HttpPost("/items/delete")]
+    public ActionResult DeleteAll()
+    {
+      Item.ClearAll();
+      return View();
     }
   }
 }
