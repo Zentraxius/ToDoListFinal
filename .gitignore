@@ -1,0 +1,7 @@
+obj/
+bin/
+.env
+dist/
+.DS_Store
+node_modules/
+.vscode
